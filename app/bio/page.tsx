@@ -3,6 +3,7 @@ import Link from "next/link";
 export default function Bio() {
   return (
     <main
+      className="bio-page"
       style={{
         minHeight: "100vh",
         background: "black",
@@ -11,6 +12,7 @@ export default function Bio() {
       }}
     >
       <div
+        className="bio-header"
         style={{
           display: "flex",
           justifyContent: "space-between",
@@ -63,8 +65,8 @@ export default function Bio() {
             }}
           >
             <img
-              src="/makossa-campo.jpg"
-              alt="Makossa"
+              src="/makossa-sole.webp"
+              alt="Makossa controluce al tramonto"
               className="bio-portrait"
               style={{
                 maxWidth: "560px",
@@ -138,38 +140,38 @@ export default function Bio() {
         </div>
       </div>
 
-      {/* foto live, sfalsate come in un editoriale */}
-      <section className="bio-gallery">
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src="/bio-live-1.jpg" alt="Makossa live, palco notturno con laser e fuochi" loading="lazy" />
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src="/bio-live-2.jpg" alt="Makossa alla consolle durante un set" loading="lazy" />
-      </section>
+      {/* foto a tutto schermo, una per pagina */}
+      {[
+        { src: "/bio-live-1.jpg", w: 2000, h: 1333, alt: "Makossa live, palco notturno con laser e fuochi" },
+        { src: "/bio-live-2.jpg", w: 2000, h: 1333, alt: "Makossa alla consolle durante un set" },
+        { src: "/makossa-campo.jpg", w: 2000, h: 2500, alt: "Makossa in un campo arato al tramonto" },
+      ].map((photo) => (
+        <section key={photo.src} className="bio-slide">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src={photo.src} width={photo.w} height={photo.h} alt={photo.alt} />
+        </section>
+      ))}
 
       <style>{`
-        .bio-gallery {
-          max-width: 1280px;
-          margin: 0 auto;
-          padding: 40px 40px 120px;
-          display: grid;
-          grid-template-columns: repeat(2, minmax(0, 1fr));
-          gap: 40px;
-          align-items: start;
+        html:has(.bio-page) { scroll-snap-type: y proximity; }
+        .bio-header { scroll-snap-align: start; }
+        .bio-slide {
+          height: 100vh;
+          height: 100svh;
+          scroll-snap-align: start;
+          display: flex;
+          align-items: center;
+          justify-content: center;
         }
-        .bio-gallery img {
+        .bio-slide img {
           display: block;
-          width: 100%;
-          aspect-ratio: 3 / 2;
-          object-fit: cover;
+          max-width: 100%;
+          max-height: 100%;
+          width: auto;
+          height: auto;
+          object-fit: contain;
         }
-        .bio-gallery img:nth-child(2) { margin-top: 120px; }
         @media (max-width: 800px) {
-          .bio-gallery {
-            grid-template-columns: 1fr;
-            gap: 16px;
-            padding: 24px 16px 60px;
-          }
-          .bio-gallery img:nth-child(2) { margin-top: 0; }
           .bio-hero { height: auto !important; padding: 0 16px 24px !important; }
           .bio-grid { grid-template-columns: 1fr !important; gap: 32px !important; }
           .bio-portrait { width: 100% !important; max-width: 100% !important; max-height: none !important; }
