@@ -62,7 +62,7 @@ export default function Bio() {
             }}
           >
             <img
-              src="/makossa.jpg"
+              src="/makossa-campo.jpg"
               alt="Makossa"
               style={{
                 maxWidth: "560px",
@@ -76,21 +76,18 @@ export default function Bio() {
           </div>
 
           <div style={{ maxWidth: "560px" }}>
-            <h1
-              style={{
-                margin: 0,
-                fontSize: "40px",
-                letterSpacing: "0.18em",
-                textTransform: "uppercase",
-                fontWeight: 500,
-              }}
-            >
-              Makossa
+            <h1 style={{ margin: 0 }}>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="/logo/makossa-logo-white.svg"
+                alt="Makossa"
+                style={{ display: "block", width: "min(420px, 100%)", height: "auto" }}
+              />
             </h1>
 
             <p
               style={{
-                marginTop: "14px",
+                marginTop: "22px",
                 marginBottom: "30px",
                 fontSize: "11px",
                 letterSpacing: "0.3em",

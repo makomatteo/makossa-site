@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 
 function DiscoCursor() {
@@ -33,13 +33,13 @@ function DiscoCursor() {
           position: "fixed",
           left: pos.x,
           top: pos.y + 10,
-          width: "320px",
-          height: "520px",
+          width: "140px",
+          height: "240px",
           transform: "translate(-50%,0)",
           clipPath: "polygon(50% 0%, 100% 100%, 0% 100%)",
           background:
             "linear-gradient(to bottom, rgba(255,255,255,0.18), rgba(255,60,60,0.08), rgba(0,0,0,0))",
-          filter: "blur(26px)",
+          filter: "blur(14px)",
           mixBlendMode: "screen",
           pointerEvents: "none",
           zIndex: 10,
@@ -52,13 +52,13 @@ function DiscoCursor() {
           position: "fixed",
           left: pos.x,
           top: pos.y,
-          width: "420px",
-          height: "420px",
+          width: "160px",
+          height: "160px",
           transform: "translate(-50%, -50%)",
           borderRadius: "50%",
           background:
             "radial-gradient(circle, rgba(255,80,80,0.18) 0%, rgba(255,80,80,0.08) 35%, rgba(0,0,0,0) 70%)",
-          filter: "blur(50px)",
+          filter: "blur(24px)",
           pointerEvents: "none",
           zIndex: 9,
         }}
@@ -71,13 +71,13 @@ function DiscoCursor() {
             position: "fixed",
             left: pos.x,
             top: pos.y,
-            width: "520px",
-            height: "520px",
+            width: "200px",
+            height: "200px",
             transform: "translate(-50%, -50%)",
             borderRadius: "50%",
             background:
               "radial-gradient(circle, rgba(255,255,255,0.9) 0%, rgba(255,100,100,0.35) 25%, rgba(0,0,0,0) 70%)",
-            filter: "blur(30px)",
+            filter: "blur(16px)",
             pointerEvents: "none",
             zIndex: 20,
           }}
@@ -89,21 +89,21 @@ function DiscoCursor() {
         style={{
           position: "fixed",
           left: pos.x,
-          top: pos.y - 140,
+          top: pos.y - 45,
           transform: "translateX(-50%)",
           pointerEvents: "none",
           zIndex: 30,
         }}
       >
-        {Array.from({ length: 8 }).map((_, i) => (
+        {Array.from({ length: 5 }).map((_, i) => (
           <div
             key={i}
             style={{
-              width: "8px",
-              height: "12px",
-              border: "1.5px solid rgba(255,220,220,0.9)",
+              width: "4px",
+              height: "6px",
+              border: "1px solid rgba(255,220,220,0.9)",
               borderRadius: "50%",
-              marginBottom: "2px",
+              marginBottom: "1px",
               transform: i % 2 ? "rotate(25deg)" : "rotate(-25deg)",
               boxShadow: "0 0 4px rgba(255,255,255,0.2)",
             }}
@@ -117,8 +117,8 @@ function DiscoCursor() {
           position: "fixed",
           left: pos.x,
           top: pos.y,
-          width: "96px",
-          height: "96px",
+          width: "20px",
+          height: "20px",
           transform: "translate(-50%, -50%)",
           borderRadius: "50%",
           overflow: "hidden",
@@ -127,7 +127,7 @@ function DiscoCursor() {
           background:
             "radial-gradient(circle at 35% 30%, rgba(255,240,240,1) 0%, rgba(255,160,160,0.9) 20%, rgba(210,50,50,0.9) 45%, rgba(90,0,0,1) 80%)",
           boxShadow:
-            "0 0 40px rgba(255,60,60,0.35), 0 0 120px rgba(255,80,80,0.25), inset -12px -14px 18px rgba(0,0,0,0.5), inset 8px 8px 14px rgba(255,255,255,0.25)",
+            "0 0 10px rgba(255,60,60,0.45), 0 0 28px rgba(255,80,80,0.25), inset -3px -3px 5px rgba(0,0,0,0.5), inset 2px 2px 3px rgba(255,255,255,0.25)",
         }}
       >
         {/* mirror grid */}
@@ -137,7 +137,7 @@ function DiscoCursor() {
             inset: 0,
             backgroundImage:
               "linear-gradient(rgba(255,255,255,0.3) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.3) 1px, transparent 1px)",
-            backgroundSize: "6px 6px",
+            backgroundSize: "3px 3px",
             opacity: 0.9,
             animation: "spin 10s linear infinite",
           }}
@@ -154,6 +154,23 @@ function DiscoCursor() {
         />
       </div>
 
+      {/* hotspot: punto preciso del puntatore */}
+      <div
+        style={{
+          position: "fixed",
+          left: pos.x,
+          top: pos.y,
+          width: "3px",
+          height: "3px",
+          transform: "translate(-50%, -50%)",
+          borderRadius: "50%",
+          background: "white",
+          boxShadow: "0 0 4px rgba(255,255,255,0.9)",
+          pointerEvents: "none",
+          zIndex: 50,
+        }}
+      />
+
       <style>{`
         @keyframes spin {
           from { transform: rotate(0deg); }
@@ -161,6 +178,140 @@ function DiscoCursor() {
         }
       `}</style>
     </>
+  );
+}
+
+function SongPlayer() {
+  const audioRef = useRef<HTMLAudioElement>(null);
+  const [playing, setPlaying] = useState(false);
+  const [volume, setVolume] = useState(0.7);
+  const [muted, setMuted] = useState(false);
+
+  useEffect(() => {
+    const audio = audioRef.current;
+    if (!audio) return;
+    audio.volume = 0.7;
+
+    // I browser bloccano l'autoplay con audio: se viene bloccato,
+    // la canzone parte alla prima interazione con la pagina.
+    const start = () => {
+      audio.play().catch(() => {});
+      window.removeEventListener("pointerdown", start);
+      window.removeEventListener("keydown", start);
+    };
+    audio.play().catch(() => {
+      window.addEventListener("pointerdown", start);
+      window.addEventListener("keydown", start);
+    });
+
+    return () => {
+      window.removeEventListener("pointerdown", start);
+      window.removeEventListener("keydown", start);
+    };
+  }, []);
+
+  const toggle = () => {
+    const audio = audioRef.current;
+    if (!audio) return;
+    if (audio.paused) audio.play().catch(() => {});
+    else audio.pause();
+  };
+
+  const changeVolume = (v: number) => {
+    const audio = audioRef.current;
+    if (!audio) return;
+    audio.volume = v;
+    audio.muted = v === 0;
+    setVolume(v);
+    setMuted(v === 0);
+  };
+
+  const toggleMute = () => {
+    const audio = audioRef.current;
+    if (!audio) return;
+    const next = !muted;
+    audio.muted = next;
+    if (!next && audio.volume === 0) {
+      audio.volume = 0.7;
+      setVolume(0.7);
+    }
+    setMuted(next);
+  };
+
+  const btn: React.CSSProperties = {
+    background: "none",
+    border: 0,
+    padding: 0,
+    color: "white",
+    font: "inherit",
+    letterSpacing: "inherit",
+    textTransform: "inherit",
+    cursor: "none",
+  };
+
+  return (
+    <div
+      // evita che i click sui controlli facciano partire la riproduzione due volte
+      onPointerDown={(e) => e.stopPropagation()}
+      className="song-player"
+      style={{
+        position: "absolute",
+        right: "40px",
+        bottom: "16px",
+        zIndex: 60,
+        display: "flex",
+        alignItems: "center",
+        gap: "18px",
+        padding: "12px 18px",
+        background: "rgba(0,0,0,0.45)",
+        border: "1px solid rgba(255,255,255,0.15)",
+        backdropFilter: "blur(8px)",
+        color: "white",
+        fontFamily: "Arial, sans-serif",
+        fontSize: "10px",
+        letterSpacing: "0.25em",
+        textTransform: "uppercase",
+      }}
+    >
+      <audio
+        ref={audioRef}
+        src="/tu-si-na-cosa-grande.m4a"
+        loop
+        preload="auto"
+        onPlay={() => setPlaying(true)}
+        onPause={() => setPlaying(false)}
+      />
+
+      <button onClick={toggle} style={{ ...btn, width: "44px", textAlign: "left" }} aria-label={playing ? "Pausa" : "Play"}>
+        {playing ? "❚❚" : "▶"}
+      </button>
+
+      <span className="song-title" style={{ color: "rgba(255,255,255,0.75)", whiteSpace: "nowrap" }}>
+        Tu si &apos;na cosa grande
+      </span>
+
+      <button onClick={toggleMute} style={{ ...btn, width: "42px" }} aria-label={muted ? "Attiva audio" : "Disattiva audio"}>
+        {muted ? "Off" : "On"}
+      </button>
+
+      <input
+        type="range"
+        min={0}
+        max={1}
+        step={0.01}
+        value={muted ? 0 : volume}
+        onChange={(e) => changeVolume(Number(e.target.value))}
+        aria-label="Volume"
+        style={{ width: "90px", accentColor: "#ff4b4b", cursor: "none" }}
+      />
+
+      <style>{`
+        @media (max-width: 700px) {
+          .song-player { left: 16px; right: 16px !important; justify-content: space-between; }
+          .song-title { display: none; }
+        }
+      `}</style>
+    </div>
   );
 }
 
@@ -228,7 +379,9 @@ export default function Home() {
             <Link href="/bio" style={{ color: "white", textDecoration: "none" }}>
               Bio
             </Link>
-            <a style={{ color: "white", textDecoration: "none" }}>Music</a>
+            <Link href="/music" style={{ color: "white", textDecoration: "none" }}>
+              Music
+            </Link>
             <a style={{ color: "white", textDecoration: "none" }}>Show</a>
             <a style={{ color: "white", textDecoration: "none" }}>Booking</a>
           </nav>
@@ -238,23 +391,26 @@ export default function Home() {
       <div
         style={{
           position: "absolute",
-          bottom: "60px",
+          top: "50%",
           left: "50%",
-          transform: "translateX(-50%)",
+          // centra la parola MAKOSSA, non l'intero logo: l'"IT" in esponente
+          // occupa il 6.9% della larghezza e resta fuori dal centro
+          transform: "translate(-46.56%, -50%)",
           textAlign: "center",
           color: "white",
         }}
       >
-        <h1
-          style={{
-            fontSize: "72px",
-            letterSpacing: "0.35em",
-            margin: 0,
-          }}
-        >
-          MAKOSSA
+        <h1 style={{ margin: 0 }}>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="/logo/makossa-logo-white.svg"
+            alt="Makossa"
+            style={{ display: "block", width: "min(640px, 84vw)", height: "auto" }}
+          />
         </h1>
       </div>
+
+      <SongPlayer />
     </main>
   );
 }

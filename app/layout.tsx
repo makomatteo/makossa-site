@@ -1,7 +1,6 @@
-import type { Metadata } from "next";
 import "./globals.css";
 
-export const metadata: Metadata = {
+export const metadata = {
   title: "Makossa",
   description: "Makossa website",
 };
@@ -13,9 +12,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body style={{ background: "black", margin: 0 }}>
-        {children}
-      </body>
+      <body style={{ margin: 0, background: "black" }}>{children}</body>
     </html>
   );
 }
