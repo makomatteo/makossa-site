@@ -4,8 +4,7 @@ export default function Bio() {
   return (
     <main
       style={{
-        height: "100vh",
-        overflow: "hidden",
+        minHeight: "100vh",
         background: "black",
         color: "white",
         fontFamily: "Arial, sans-serif",
@@ -35,6 +34,7 @@ export default function Bio() {
       </div>
 
       <div
+        className="bio-hero"
         style={{
           height: "calc(100vh - 84px)",
           display: "flex",
@@ -45,6 +45,7 @@ export default function Bio() {
         }}
       >
         <div
+          className="bio-grid"
           style={{
             width: "100%",
             maxWidth: "1200px",
@@ -64,9 +65,10 @@ export default function Bio() {
             <img
               src="/makossa-campo.jpg"
               alt="Makossa"
+              className="bio-portrait"
               style={{
                 maxWidth: "560px",
-                maxHeight: "760px",
+                maxHeight: "min(760px, calc(100vh - 140px))",
                 width: "auto",
                 height: "auto",
                 objectFit: "contain",
@@ -135,6 +137,44 @@ export default function Bio() {
           </div>
         </div>
       </div>
+
+      {/* foto live, sfalsate come in un editoriale */}
+      <section className="bio-gallery">
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img src="/bio-live-1.jpg" alt="Makossa live, palco notturno con laser e fuochi" loading="lazy" />
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img src="/bio-live-2.jpg" alt="Makossa alla consolle durante un set" loading="lazy" />
+      </section>
+
+      <style>{`
+        .bio-gallery {
+          max-width: 1280px;
+          margin: 0 auto;
+          padding: 40px 40px 120px;
+          display: grid;
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+          gap: 40px;
+          align-items: start;
+        }
+        .bio-gallery img {
+          display: block;
+          width: 100%;
+          aspect-ratio: 3 / 2;
+          object-fit: cover;
+        }
+        .bio-gallery img:nth-child(2) { margin-top: 120px; }
+        @media (max-width: 800px) {
+          .bio-gallery {
+            grid-template-columns: 1fr;
+            gap: 16px;
+            padding: 24px 16px 60px;
+          }
+          .bio-gallery img:nth-child(2) { margin-top: 0; }
+          .bio-hero { height: auto !important; padding: 0 16px 24px !important; }
+          .bio-grid { grid-template-columns: 1fr !important; gap: 32px !important; }
+          .bio-portrait { width: 100% !important; max-width: 100% !important; max-height: none !important; }
+        }
+      `}</style>
     </main>
   );
 }

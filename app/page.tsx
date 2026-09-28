@@ -5,7 +5,6 @@ import Link from "next/link";
 
 function DiscoCursor() {
   const [pos, setPos] = useState({ x: -100, y: -100 });
-  const [flash, setFlash] = useState(false);
 
   useEffect(() => {
     const move = (e: MouseEvent) => {
@@ -13,89 +12,23 @@ function DiscoCursor() {
     };
 
     window.addEventListener("mousemove", move);
-
-    const flashTimer = setInterval(() => {
-      setFlash(true);
-      setTimeout(() => setFlash(false), 120);
-    }, 2600);
-
-    return () => {
-      window.removeEventListener("mousemove", move);
-      clearInterval(flashTimer);
-    };
+    return () => window.removeEventListener("mousemove", move);
   }, []);
 
   return (
     <>
-      {/* spotlight */}
-      <div
-        style={{
-          position: "fixed",
-          left: pos.x,
-          top: pos.y + 10,
-          width: "140px",
-          height: "240px",
-          transform: "translate(-50%,0)",
-          clipPath: "polygon(50% 0%, 100% 100%, 0% 100%)",
-          background:
-            "linear-gradient(to bottom, rgba(255,255,255,0.18), rgba(255,60,60,0.08), rgba(0,0,0,0))",
-          filter: "blur(14px)",
-          mixBlendMode: "screen",
-          pointerEvents: "none",
-          zIndex: 10,
-        }}
-      />
-
-      {/* ambient glow */}
-      <div
-        style={{
-          position: "fixed",
-          left: pos.x,
-          top: pos.y,
-          width: "160px",
-          height: "160px",
-          transform: "translate(-50%, -50%)",
-          borderRadius: "50%",
-          background:
-            "radial-gradient(circle, rgba(255,80,80,0.18) 0%, rgba(255,80,80,0.08) 35%, rgba(0,0,0,0) 70%)",
-          filter: "blur(24px)",
-          pointerEvents: "none",
-          zIndex: 9,
-        }}
-      />
-
-      {/* flash */}
-      {flash && (
-        <div
-          style={{
-            position: "fixed",
-            left: pos.x,
-            top: pos.y,
-            width: "200px",
-            height: "200px",
-            transform: "translate(-50%, -50%)",
-            borderRadius: "50%",
-            background:
-              "radial-gradient(circle, rgba(255,255,255,0.9) 0%, rgba(255,100,100,0.35) 25%, rgba(0,0,0,0) 70%)",
-            filter: "blur(16px)",
-            pointerEvents: "none",
-            zIndex: 20,
-          }}
-        />
-      )}
-
       {/* chain */}
       <div
         style={{
           position: "fixed",
           left: pos.x,
-          top: pos.y - 45,
+          top: pos.y - 27,
           transform: "translateX(-50%)",
           pointerEvents: "none",
           zIndex: 30,
         }}
       >
-        {Array.from({ length: 5 }).map((_, i) => (
+        {Array.from({ length: 2 }).map((_, i) => (
           <div
             key={i}
             style={{
@@ -153,23 +86,6 @@ function DiscoCursor() {
           }}
         />
       </div>
-
-      {/* hotspot: punto preciso del puntatore */}
-      <div
-        style={{
-          position: "fixed",
-          left: pos.x,
-          top: pos.y,
-          width: "3px",
-          height: "3px",
-          transform: "translate(-50%, -50%)",
-          borderRadius: "50%",
-          background: "white",
-          boxShadow: "0 0 4px rgba(255,255,255,0.9)",
-          pointerEvents: "none",
-          zIndex: 50,
-        }}
-      />
 
       <style>{`
         @keyframes spin {
@@ -275,7 +191,7 @@ function SongPlayer() {
     >
       <audio
         ref={audioRef}
-        src="/tu-si-na-cosa-grande.m4a"
+        src="/salerosa.m4a"
         loop
         preload="auto"
         onPlay={() => setPlaying(true)}
@@ -287,7 +203,7 @@ function SongPlayer() {
       </button>
 
       <span className="song-title" style={{ color: "rgba(255,255,255,0.75)", whiteSpace: "nowrap" }}>
-        Tu si &apos;na cosa grande
+        Salerosa
       </span>
 
       <button onClick={toggleMute} style={{ ...btn, width: "42px" }} aria-label={muted ? "Attiva audio" : "Disattiva audio"}>
