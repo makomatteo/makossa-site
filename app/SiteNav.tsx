@@ -6,7 +6,6 @@ import { usePathname } from "next/navigation";
 const LINKS = [
   { label: "Bio", href: "/bio" },
   { label: "Music", href: "/music" },
-  { label: "20/20", href: "/20-20" },
   { label: "All you need", href: "/all-you-need" },
   { label: "Booking", href: "https://www.atom.art/representation/makossa", external: true },
 ];
