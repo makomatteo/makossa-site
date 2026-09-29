@@ -258,6 +258,7 @@ export default function Home() {
         }}
       >
         <div
+          className="home-nav-wrap"
           style={{
             display: "flex",
             justifyContent: "flex-end",
@@ -265,6 +266,7 @@ export default function Home() {
           }}
         >
           <nav
+            className="home-nav"
             style={{
               display: "flex",
               gap: "30px",
@@ -331,6 +333,19 @@ export default function Home() {
         </h1>
 
         <style>{`
+          /* menu home su telefono: tutte le voci visibili, niente a capo dentro la voce */
+          .home-nav a { white-space: nowrap; }
+          @media (max-width: 760px) {
+            .home-nav-wrap { padding: 24px 20px !important; justify-content: center !important; }
+            .home-nav {
+              flex-wrap: wrap;
+              justify-content: center;
+              column-gap: 22px !important;
+              row-gap: 16px;
+              font-size: 11px !important;
+              letter-spacing: 0.24em !important;
+            }
+          }
           /* intro a stacchi secchi sulla scritta MAKOSSA */
           @keyframes makossa-cut {
             0%   { opacity: 0; transform: scale(1.14); filter: blur(6px); }
