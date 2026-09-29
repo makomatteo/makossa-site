@@ -7,6 +7,7 @@ const LINKS = [
   { label: "Bio", href: "/bio" },
   { label: "Music", href: "/music" },
   { label: "All you need", href: "/all-you-need" },
+  { label: "Shows", href: "/shows" },
   { label: "Booking", href: "https://www.atom.art/representation/makossa", external: true },
 ];
 

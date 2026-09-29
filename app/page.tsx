@@ -282,6 +282,9 @@ export default function Home() {
             <Link href="/all-you-need" style={{ color: "white", textDecoration: "none" }}>
               All you need
             </Link>
+            <Link href="/shows" style={{ color: "white", textDecoration: "none" }}>
+              Shows
+            </Link>
             <a
               href="https://www.atom.art/representation/makossa"
               target="_blank"
