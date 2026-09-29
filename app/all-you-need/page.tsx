@@ -118,15 +118,7 @@ export default function AllYouNeed() {
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img className="ayn-logo" src="/logo/makossa-logo-white.svg" alt="Makossa" />
 
-        <h2 className="ayn-title cut" style={{ ["--i" as string]: 0 }}>Video</h2>
-        <VideoBlock
-          youtubeId={KISS_ME_YT}
-          title="Kiss Me"
-          fallbackImg={KISS_ME_COVER}
-          fallbackHref={KISS_ME_LINK}
-        />
-
-        <h2 className="ayn-title cut" style={{ marginTop: "72px", ["--i" as string]: 0 }}>Latest album</h2>
+        <h2 className="ayn-title cut" style={{ ["--i" as string]: 0 }}>Latest album</h2>
         <nav className="ayn-list">
           <div className="ayn-block" style={{ ["--brand" as string]: "#ffffff" }}>
             <a className="ayn-banner" href="/20-20">
@@ -146,6 +138,14 @@ export default function AllYouNeed() {
             </a>
           </div>
         </nav>
+
+        <h2 className="ayn-title cut" style={{ marginTop: "72px", ["--i" as string]: 0 }}>Video</h2>
+        <VideoBlock
+          youtubeId={KISS_ME_YT}
+          title="Kiss Me"
+          fallbackImg={KISS_ME_COVER}
+          fallbackHref={KISS_ME_LINK}
+        />
 
         <h2 className="ayn-title cut" style={{ marginTop: "72px", ["--i" as string]: 0 }}>Listen &amp; follow</h2>
         <nav className="ayn-list">
