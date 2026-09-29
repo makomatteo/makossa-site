@@ -65,7 +65,7 @@ export default function Music() {
         minHeight: "100vh",
         background: "black",
         color: "white",
-        fontFamily: "Arial, sans-serif",
+        fontFamily: "var(--font-jost), Arial, sans-serif",
       }}
     >
       <div
@@ -91,15 +91,17 @@ export default function Music() {
         <div style={{ color: "rgba(255,255,255,0.45)" }}>Music</div>
       </div>
 
+      <section className="hero">
+        <picture>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src="/makossa-campo-hd.jpg" alt="" />
+        </picture>
+        <span className="hero-veil" />
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img className="hero-logo" src="/logo/makossa-logo-white.svg" alt="Makossa" />
+      </section>
+
       <div className="music-wrap">
-        {/* banner del profilo Bandcamp */}
-        <a className="hero" href={BANDCAMP} target="_blank" rel="noreferrer">
-          <picture>
-            <source srcSet="https://f4.bcbits.com/img/0047226613_102.avif" type="image/avif" />
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="https://f4.bcbits.com/img/0047226613_100.png" alt="Makossa" width={975} height={180} />
-          </picture>
-        </a>
 
         {/* uscita selezionata, impaginata come una pagina album di Bandcamp */}
         <section className="release">
@@ -123,6 +125,9 @@ export default function Music() {
             />
 
             <div className="release-actions">
+              {release.slug === "20-20" ? (
+                <Link href="/20-20">Album page →</Link>
+              ) : null}
               <a href={releaseUrl} target="_blank" rel="noreferrer">
                 {release.type === "album" ? "Buy Digital Album" : "Buy Digital Track"} ↗
               </a>
@@ -162,13 +167,35 @@ export default function Music() {
           padding: 10px 40px 80px;
         }
         .hero {
-          display: block;
-          margin-bottom: 48px;
+          position: relative;
+          display: grid;
+          place-items: center;
+          height: 100vh;
+          height: 100svh;
+          margin-bottom: 72px;
+          overflow: hidden;
+          background: #000;
         }
-        .hero img {
-          display: block;
+        .hero picture, .hero picture img {
+          position: absolute;
+          inset: 0;
           width: 100%;
+          height: 100%;
+        }
+        .hero picture img {
+          object-fit: cover;
+          filter: saturate(0.9) brightness(0.72);
+        }
+        .hero-veil {
+          position: absolute;
+          inset: 0;
+          background: linear-gradient(180deg, rgba(0,0,0,0.25), rgba(0,0,0,0.55));
+        }
+        .hero-logo {
+          position: relative;
+          width: min(520px, 76vw);
           height: auto;
+          display: block;
         }
         .release {
           display: grid;
@@ -225,10 +252,10 @@ export default function Music() {
         .grid {
           list-style: none;
           margin: 0;
-          padding: 48px 0 0;
+          padding: 56px 0 0;
           display: grid;
-          grid-template-columns: repeat(4, 1fr);
-          gap: 36px 24px;
+          grid-template-columns: repeat(4, minmax(0, 1fr));
+          gap: 40px 20px;
         }
         .grid button {
           display: block;
@@ -244,9 +271,9 @@ export default function Music() {
         .grid img {
           display: block;
           width: 100%;
-          aspect-ratio: 1;
+          aspect-ratio: 1 / 1;
           object-fit: cover;
-          margin-bottom: 10px;
+          margin-bottom: 12px;
           outline: 2px solid transparent;
           outline-offset: 3px;
           transition: opacity 0.2s, outline-color 0.2s;
@@ -256,13 +283,18 @@ export default function Music() {
         .grid button.active .grid-title { color: #ff4b4b; }
         .grid-title {
           display: block;
-          font-size: 13px;
-          font-weight: bold;
-          line-height: 1.35;
+          font-size: 11px;
+          font-weight: 300;
+          letter-spacing: 0.16em;
+          text-transform: uppercase;
+          line-height: 1.5;
+          color: rgba(255,255,255,0.7);
         }
+        .grid button:hover .grid-title { color: #fff; }
         @media (max-width: 800px) {
           .music-wrap { padding: 0 16px 60px; }
-          .hero { margin: 0 -16px 28px; }
+          .hero { height: 100svh; margin-bottom: 40px; }
+          .hero-logo { width: 78vw; }
           .release {
             grid-template-columns: 1fr;
             gap: 24px;

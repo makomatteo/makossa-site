@@ -298,14 +298,25 @@ export default function Home() {
             <Link href="/music" style={{ color: "white", textDecoration: "none" }}>
               Music
             </Link>
-            <a style={{ color: "white", textDecoration: "none" }}>Show</a>
-            <a style={{ color: "white", textDecoration: "none" }}>Booking</a>
+            <Link href="/all-you-need" style={{ color: "white", textDecoration: "none" }}>
+              All you need
+            </Link>
+            <a
+              href="https://www.atom.art/representation/makossa"
+              target="_blank"
+              rel="noreferrer"
+              style={{ color: "white", textDecoration: "none" }}
+            >
+              Booking
+            </a>
           </nav>
         </div>
       </header>
 
       <div
+        className="home-mark"
         style={{
+          ["--ghost-img" as string]: "url(/logo/makossa-logo-white.svg)",
           position: "absolute",
           top: "50%",
           left: "50%",
@@ -316,14 +327,108 @@ export default function Home() {
           color: "white",
         }}
       >
-        <h1 style={{ margin: 0 }}>
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            src="/logo/makossa-logo-white.svg"
-            alt="Makossa"
-            style={{ display: "block", width: "min(640px, 84vw)", height: "auto" }}
-          />
+        <h1 style={{ margin: 0 }} className="home-title">
+          <svg
+            viewBox="54 -10 7745 720"
+            role="img"
+            aria-label="Makossa"
+            style={{ display: "block", width: "min(640px, 84vw)", height: "auto", fill: "#000" }}
+          >
+            <path d="M152.3 84.3 412.1 606.7 671.9 84.3 737.3 700H770L692.1 -20.9L412.1 540.5L132.1 -20.9L54.1 700H86.8Z" />
+            <path d="M1458.3 446.2H1809.2L1800.4 415.7H1467.1ZM1632.8 54.8 1784.6 428.7 1787.7 436.7 1893.2 700H1929.5L1632.8 -20.9L1336.1 700H1372.4L1479.2 434.9L1482.3 426.8Z" />
+            <path d="M2525.5 0V700H2558.2V0ZM2859.4 0 2549.2 328.6 2873.7 700H2916.5L2590 328L2901.5 0Z" />
+            <path className="home-moon" d="M3763.8 -9.1A360.0 360.0 0 1 1 3763.8 709.1A360.0 360.0 0 0 0 3763.8 -9.1Z" />
+            <path d="M4725.3 505 4697.6 520.6Q4710 570.8 4737 613.8Q4763.9 656.8 4808.2 682.7Q4852.4 708.6 4915.1 708.6Q4959.2 708.6 4994.9 694.9Q5030.6 681.3 5056.1 656.7Q5081.7 632.1 5095.6 598.3Q5109.6 564.5 5109.6 524.1Q5109.6 479 5094.4 446.2Q5079.1 413.5 5054 390.1Q5029 366.6 4998.3 350.6Q4967.7 334.6 4937.5 323.2Q4885 303.6 4845.3 280.7Q4805.5 257.8 4783.5 226.6Q4761.4 195.4 4761.4 150.1Q4761.4 92.1 4799.8 57.9Q4838.1 23.7 4902.9 23.7Q4951.7 23.7 4984.8 41.8Q5017.9 59.9 5038.6 87Q5059.3 114.1 5069.5 141.5L5098.7 126.4Q5087.3 95.1 5062.3 64Q5037.2 33 4998.2 12.2Q4959.3 -8.6 4904.4 -8.6Q4853.2 -8.6 4813.2 11.4Q4773.2 31.3 4750.4 67.8Q4727.5 104.2 4727.5 153.3Q4727.5 195.7 4743.9 226.9Q4760.3 258.1 4787.5 280.6Q4814.8 303.1 4847.8 319.8Q4880.9 336.4 4913.9 348.9Q4953.9 363.6 4991.2 385Q5028.5 406.4 5052.2 440.1Q5076 473.7 5076 527.1Q5076 592 5033.9 634.7Q4991.8 677.3 4916 677.3Q4858.4 677.3 4820.1 653.3Q4781.8 629.3 4759.2 589.9Q4736.6 550.5 4725.3 505Z" />
+            <path d="M5731.3 505 5703.6 520.6Q5716 570.8 5743 613.8Q5769.9 656.8 5814.2 682.7Q5858.4 708.6 5921.1 708.6Q5965.2 708.6 6000.9 694.9Q6036.6 681.3 6062.1 656.7Q6087.7 632.1 6101.6 598.3Q6115.6 564.5 6115.6 524.1Q6115.6 479 6100.4 446.2Q6085.1 413.5 6060 390.1Q6035 366.6 6004.3 350.6Q5973.7 334.6 5943.5 323.2Q5891 303.6 5851.3 280.7Q5811.5 257.8 5789.5 226.6Q5767.4 195.4 5767.4 150.1Q5767.4 92.1 5805.8 57.9Q5844.1 23.7 5908.9 23.7Q5957.7 23.7 5990.8 41.8Q6023.9 59.9 6044.6 87Q6065.3 114.1 6075.5 141.5L6104.7 126.4Q6093.3 95.1 6068.3 64Q6043.2 33 6004.2 12.2Q5965.3 -8.6 5910.4 -8.6Q5859.2 -8.6 5819.2 11.4Q5779.2 31.3 5756.4 67.8Q5733.5 104.2 5733.5 153.3Q5733.5 195.7 5749.9 226.9Q5766.3 258.1 5793.5 280.6Q5820.8 303.1 5853.8 319.8Q5886.9 336.4 5919.9 348.9Q5959.9 363.6 5997.2 385Q6034.5 406.4 6058.2 440.1Q6082 473.7 6082 527.1Q6082 592 6039.9 634.7Q5997.8 677.3 5922 677.3Q5864.4 677.3 5826.1 653.3Q5787.8 629.3 5765.2 589.9Q5742.6 550.5 5731.3 505Z" />
+            <path d="M6795.3 446.2H7146.2L7137.4 415.7H6804.1ZM6969.8 54.8 7121.6 428.7 7124.7 436.7 7230.2 700H7266.5L6969.8 -20.9L6673.1 700H6709.4L6816.2 434.9L6819.3 426.8Z" />
+            <path d="M7518 0V183.4H7532.4V0Z" />
+            <path d="M7688.6 13.7H7736.8V183.4H7751.3V13.7H7799.5V0H7688.6Z" />
+          </svg>
         </h1>
+
+        <style>{`
+          /* intro a stacchi secchi sulla scritta MAKOSSA */
+          @keyframes makossa-cut {
+            0%   { opacity: 0; transform: scale(1.14); filter: blur(6px); }
+            6%   { opacity: 1; transform: scale(1.06); filter: blur(0); }
+            10%  { opacity: 0; }
+            16%  { opacity: 1; transform: scale(1.03) translateX(-4px); }
+            20%  { opacity: 0; }
+            26%  { opacity: 1; transform: scale(1.01) translateX(3px); }
+            32%  { opacity: 0.1; }
+            40%  { opacity: 1; transform: none; }
+            100% { opacity: 1; transform: none; }
+          }
+          @keyframes makossa-ghost {
+            0%, 34% { opacity: 0; }
+            40% { opacity: 0.55; transform: translateX(-10px); }
+            60% { opacity: 0.25; transform: translateX(-3px); }
+            100% { opacity: 0; transform: none; }
+          }
+          .home-title {
+            position: relative;
+            animation: makossa-cut 2.6s steps(1, end) both;
+          }
+          /* scritta nera piena, nessun alone dietro */
+          /* la luna gira lentamente, un giro ogni tanto */
+          @keyframes moon-spin {
+            0%, 62% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+          }
+          .home-moon {
+            transform-box: view-box;
+            transform-origin: 3763.8px 350px;
+            animation: moon-spin 46s cubic-bezier(.45,0,.55,1) infinite;
+          }
+          @media (prefers-reduced-motion: reduce) {
+            .home-moon { animation: none; }
+          }
+          .home-title::before,
+          .home-title::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: var(--ghost-img);
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            pointer-events: none;
+            mix-blend-mode: screen;
+          }
+          .home-title::before {
+            background-color: rgba(255,0,60,0.6);
+            -webkit-mask-image: var(--ghost-img);
+            mask-image: var(--ghost-img);
+            -webkit-mask-size: contain;
+            mask-size: contain;
+            -webkit-mask-repeat: no-repeat;
+            mask-repeat: no-repeat;
+            -webkit-mask-position: center;
+            mask-position: center;
+            background-image: none;
+            animation: makossa-ghost 2.6s ease-out both;
+          }
+          .home-title::after {
+            background-color: rgba(0,180,255,0.6);
+            -webkit-mask-image: var(--ghost-img);
+            mask-image: var(--ghost-img);
+            -webkit-mask-size: contain;
+            mask-size: contain;
+            -webkit-mask-repeat: no-repeat;
+            mask-repeat: no-repeat;
+            -webkit-mask-position: center;
+            mask-position: center;
+            background-image: none;
+            animation: makossa-ghost 2.6s ease-out both reverse;
+          }
+          @media (prefers-reduced-motion: reduce) {
+            .home-title, .home-title::before, .home-title::after {
+              animation: none;
+              opacity: 1;
+            }
+            .home-title::before, .home-title::after { display: none; }
+          }
+        `}</style>
       </div>
 
       <SongPlayer />

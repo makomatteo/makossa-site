@@ -89,21 +89,9 @@ export default function Bio() {
               />
             </h1>
 
-            <p
-              style={{
-                marginTop: "22px",
-                marginBottom: "30px",
-                fontSize: "11px",
-                letterSpacing: "0.3em",
-                textTransform: "uppercase",
-                color: "rgba(255,255,255,0.6)",
-              }}
-            >
-              DJ · Producer · Downtempo Voyager
-            </p>
-
             <div
               style={{
+                marginTop: "34px",
                 fontSize: "15px",
                 lineHeight: 1.7,
                 color: "rgba(255,255,255,0.78)",
@@ -117,9 +105,9 @@ export default function Bio() {
 
               <p style={{ marginTop: 0, marginBottom: "18px" }}>
                 Drawing from global rhythms, Mediterranean sensibilities, and a
-                deep curiosity for sound, his productions weave tribal
-                textures, oriental influences, and hypnotic electronic
-                structures.
+                deep search for future sound, his productions ride tribal waves
+                into oriental influences, held together by a serious, hypnotic
+                pull.
               </p>
 
               <p style={{ marginTop: 0, marginBottom: "18px" }}>
@@ -144,7 +132,7 @@ export default function Bio() {
       {[
         { src: "/bio-live-1.jpg", w: 2000, h: 1333, alt: "Makossa live, palco notturno con laser e fuochi" },
         { src: "/bio-live-2.jpg", w: 2000, h: 1333, alt: "Makossa alla consolle durante un set" },
-        { src: "/makossa-campo.jpg", w: 2000, h: 2500, alt: "Makossa in un campo arato al tramonto" },
+        { src: "/bio-live-3.jpg", w: 1280, h: 1600, alt: "Makossa in consolle, controluce blu tra il fumo" },
       ].map((photo) => (
         <section key={photo.src} className="bio-slide">
           {/* eslint-disable-next-line @next/next/no-img-element */}
