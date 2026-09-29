@@ -14,10 +14,10 @@ export const metadata = {
 const LISTEN = [
   {
     label: "SoundCloud",
-    href: "https://soundcloud.com/mmakossa",
+    href: "https://soundcloud.com/makossa-it",
     color: "#ff5500",
     embed:
-      "https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/mmakossa&color=%23ff5500&visual=true&show_artwork=true&show_comments=true&show_user=true&show_playcount=true&show_teaser=false&sharing=true&buying=false&download=false&hide_related=true",
+      "https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/makossa-it&color=%23ff5500&visual=true&show_artwork=true&show_comments=true&show_user=true&show_playcount=true&show_teaser=false&sharing=true&buying=false&download=false&hide_related=true",
     embedHeight: 420,
   },
   { label: "Spotify", href: "https://open.spotify.com/artist/0vjcd2Obtoj3k6h5JXsZ05", color: "#1db954" },
