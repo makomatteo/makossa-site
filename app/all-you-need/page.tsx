@@ -4,6 +4,7 @@ import VideoBlock from "./VideoBlock";
 // Metti qui l'id del video YouTube di Kiss Me (la parte dopo v=).
 const KISS_ME_YT = "djlDPdjlDXc";
 const KISS_ME_COVER = "https://f4.bcbits.com/img/a3696766799_10.jpg";
+const ALBUM_VINYL = "https://f4.bcbits.com/img/0022982559_10.jpg";
 const KISS_ME_LINK = "https://www.youtube.com/watch?v=djlDPdjlDXc";
 
 export const metadata = {
@@ -133,6 +134,15 @@ export default function AllYouNeed() {
               <span className="ayn-label">20/20</span>
               <span className="ayn-arrow" aria-hidden="true">→</span>
               <span className="ayn-line" />
+            </a>
+
+            <a className="ayn-album" href="/20-20">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src={ALBUM_VINYL} alt="20/20, vinile 140g nero" />
+              <span className="ayn-album-foot">
+                <span>140g black vinyl · limited 200 · + poster</span>
+                <span aria-hidden="true">→</span>
+              </span>
             </a>
           </div>
         </nav>
@@ -347,6 +357,36 @@ export default function AllYouNeed() {
           height: 100%;
           border: 0;
         }
+
+        .ayn-album {
+          display: block;
+          margin: 14px 0 0;
+          border: 1px solid rgba(255,255,255,0.1);
+          background: rgba(255,255,255,0.02);
+          color: rgba(255,255,255,0.65);
+          text-decoration: none;
+          transition: border-color 0.5s, color 0.5s;
+        }
+        .ayn-album img {
+          display: block;
+          width: 100%;
+          aspect-ratio: 1 / 1;
+          object-fit: cover;
+          filter: saturate(0.9) brightness(0.9);
+          transition: filter 0.6s;
+        }
+        .ayn-album-foot {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          padding: 14px 16px;
+          font-size: 10px;
+          font-weight: 300;
+          letter-spacing: 0.26em;
+          text-transform: uppercase;
+        }
+        .ayn-album:hover { border-color: #fff; color: #fff; }
+        .ayn-album:hover img { filter: none; }
 
         .ayn-grid {
           display: block;

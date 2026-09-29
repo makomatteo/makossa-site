@@ -98,16 +98,15 @@ export default function Bio() {
               }}
             >
               <p style={{ marginTop: 0, marginBottom: "18px" }}>
-                Makossa is an Italian DJ and producer shaping sonic landscapes
-                through more than two decades of musical exploration and
-                cultural wandering.
+                Makossa is an Italian DJ and producer based in Milan. Shaping
+                unique sonic worlds through more than two decades of musical
+                exploration and cultural discovery.
               </p>
 
               <p style={{ marginTop: 0, marginBottom: "18px" }}>
-                Drawing from global rhythms, Mediterranean sensibilities, and a
-                deep search for future sound, his productions ride tribal waves
-                into oriental influences, held together by a serious, hypnotic
-                pull.
+                Drawing from Mediterranean sensibilities and a deep search for
+                future sound, his productions carry world music textures into
+                hypnotic electronica, held together with quiet authority.
               </p>
 
               <p style={{ marginTop: 0, marginBottom: "18px" }}>

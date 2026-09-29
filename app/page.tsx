@@ -3,97 +3,78 @@
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 
-function DiscoCursor() {
-  const [pos, setPos] = useState({ x: -100, y: -100 });
+function GinTonicCursor() {
+  const [pos, setPos] = useState({ x: -200, y: -200 });
 
   useEffect(() => {
-    const move = (e: MouseEvent) => {
-      setPos({ x: e.clientX, y: e.clientY });
-    };
-
+    const move = (e: MouseEvent) => setPos({ x: e.clientX, y: e.clientY });
     window.addEventListener("mousemove", move);
     return () => window.removeEventListener("mousemove", move);
   }, []);
 
   return (
-    <>
-      {/* chain */}
-      <div
-        style={{
-          position: "fixed",
-          left: pos.x,
-          top: pos.y - 27,
-          transform: "translateX(-50%)",
-          pointerEvents: "none",
-          zIndex: 30,
-        }}
-      >
-        {Array.from({ length: 2 }).map((_, i) => (
-          <div
-            key={i}
-            style={{
-              width: "4px",
-              height: "6px",
-              border: "1px solid rgba(255,220,220,0.9)",
-              borderRadius: "50%",
-              marginBottom: "1px",
-              transform: i % 2 ? "rotate(25deg)" : "rotate(-25deg)",
-              boxShadow: "0 0 4px rgba(255,255,255,0.2)",
-            }}
-          />
-        ))}
-      </div>
+    <div
+      className="gt-cursor"
+      style={{
+        position: "fixed",
+        left: pos.x,
+        top: pos.y,
+        pointerEvents: "none",
+        zIndex: 60,
+      }}
+    >
+      {/* la punta della cannuccia sta esattamente sul puntatore */}
+      <svg width="52" height="72" viewBox="0 0 52 72" fill="none" aria-hidden="true">
+        <defs>
+          <clipPath id="gt-glass">
+            <path d="M15 26 H37 L34.5 63 Q34.3 66 31.5 66 H20.5 Q17.7 66 17.5 63 Z" />
+          </clipPath>
+        </defs>
 
-      {/* disco ball */}
-      <div
-        style={{
-          position: "fixed",
-          left: pos.x,
-          top: pos.y,
-          width: "20px",
-          height: "20px",
-          transform: "translate(-50%, -50%)",
-          borderRadius: "50%",
-          overflow: "hidden",
-          pointerEvents: "none",
-          zIndex: 40,
-          background:
-            "radial-gradient(circle at 35% 30%, rgba(255,240,240,1) 0%, rgba(255,160,160,0.9) 20%, rgba(210,50,50,0.9) 45%, rgba(90,0,0,1) 80%)",
-          boxShadow:
-            "0 0 10px rgba(255,60,60,0.45), 0 0 28px rgba(255,80,80,0.25), inset -3px -3px 5px rgba(0,0,0,0.5), inset 2px 2px 3px rgba(255,255,255,0.25)",
-        }}
-      >
-        {/* mirror grid */}
-        <div
-          style={{
-            position: "absolute",
-            inset: 0,
-            backgroundImage:
-              "linear-gradient(rgba(255,255,255,0.3) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.3) 1px, transparent 1px)",
-            backgroundSize: "3px 3px",
-            opacity: 0.9,
-            animation: "spin 10s linear infinite",
-          }}
-        />
+        {/* cannuccia */}
+        <line x1="2" y1="2" x2="27" y2="40" stroke="#ff4b4b" strokeWidth="3.2" strokeLinecap="round" />
+        <line x1="2" y1="2" x2="27" y2="40" stroke="rgba(255,255,255,0.55)" strokeWidth="1.1" strokeLinecap="round" strokeDasharray="3 5" />
 
-        {/* highlight */}
-        <div
-          style={{
-            position: "absolute",
-            inset: 0,
-            background:
-              "radial-gradient(circle at 30% 25%, rgba(255,255,255,0.85) 0%, rgba(255,255,255,0.3) 15%, rgba(0,0,0,0) 40%)",
-          }}
+        {/* liquido */}
+        <g clipPath="url(#gt-glass)">
+          <rect x="14" y="31" width="24" height="36" fill="rgba(186,228,242,0.38)" />
+          <circle cx="22" cy="55" r="1.5" className="gt-b1" fill="rgba(255,255,255,0.85)" />
+          <circle cx="28" cy="58" r="1.1" className="gt-b2" fill="rgba(255,255,255,0.75)" />
+          <circle cx="25" cy="61" r="0.9" className="gt-b3" fill="rgba(255,255,255,0.7)" />
+          {/* ghiaccio */}
+          <rect x="19" y="34" width="9" height="9" rx="1.5" transform="rotate(-14 23.5 38.5)" fill="rgba(255,255,255,0.3)" stroke="rgba(255,255,255,0.45)" strokeWidth="0.8" />
+          <rect x="26" y="43" width="8" height="8" rx="1.5" transform="rotate(20 30 47)" fill="rgba(255,255,255,0.22)" stroke="rgba(255,255,255,0.4)" strokeWidth="0.8" />
+        </g>
+
+        {/* lime sul bordo */}
+        <path d="M37 26 a6 6 0 0 1 -6 6 v-6 z" fill="rgba(160,214,90,0.9)" />
+        <path d="M37 26 a6 6 0 0 1 -6 6" stroke="rgba(230,255,190,0.9)" strokeWidth="0.9" fill="none" />
+
+        {/* bicchiere */}
+        <path
+          d="M15 26 H37 L34.5 63 Q34.3 66 31.5 66 H20.5 Q17.7 66 17.5 63 Z"
+          stroke="rgba(255,255,255,0.85)"
+          strokeWidth="1.5"
+          fill="rgba(255,255,255,0.05)"
         />
-      </div>
+        <line x1="15" y1="26" x2="37" y2="26" stroke="rgba(255,255,255,0.95)" strokeWidth="1.6" strokeLinecap="round" />
+      </svg>
 
       <style>{`
-        @keyframes spin {
-          from { transform: rotate(0deg); }
-          to { transform: rotate(360deg); }
+        .gt-cursor svg { filter: drop-shadow(0 4px 10px rgba(0,0,0,0.55)); }
+        @keyframes gt-bubble {
+          0% { transform: translateY(0); opacity: 0; }
+          15% { opacity: 1; }
+          100% { transform: translateY(-22px); opacity: 0; }
+        }
+        .gt-b1 { animation: gt-bubble 2.4s linear infinite; }
+        .gt-b2 { animation: gt-bubble 3.1s linear infinite 0.6s; }
+        .gt-b3 { animation: gt-bubble 2.7s linear infinite 1.2s; }
+        @media (prefers-reduced-motion: reduce) {
+          .gt-b1, .gt-b2, .gt-b3 { animation: none; }
         }
       `}</style>
-    </>
+    </div>
   );
 }
 
@@ -242,7 +223,7 @@ export default function Home() {
         position: "relative",
       }}
     >
-      <DiscoCursor />
+      <GinTonicCursor />
 
       <video
         autoPlay
