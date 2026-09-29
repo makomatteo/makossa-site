@@ -241,9 +241,10 @@ export default function Home() {
           objectFit: "cover",
         }}
       >
-        {/* H.264: parte ovunque (iPhone, Android, Chrome, Firefox, Edge) e pesa 7 MB invece di 62 */}
-        <source src="/home-video.mp4" type="video/mp4" />
-        <source src="/pizzine-video.mov" type="video/quicktime" />
+        {/* telefono in verticale: taglio 9:16 alla risoluzione nativa, cosi resta nitido */}
+        <source src="/home-video-mobile.mp4" type="video/mp4" media="(max-aspect-ratio: 4/5)" />
+        {/* desktop e tablet: 1080p H.264, parte in tutti i browser */}
+        <source src="/home-video-hd.mp4" type="video/mp4" />
       </video>
 
       <div
