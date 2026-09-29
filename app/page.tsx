@@ -215,6 +215,7 @@ function SongPlayer() {
 export default function Home() {
   return (
     <main
+      className="home-main"
       style={{
         height: "100vh",
         background: "black",
@@ -230,6 +231,8 @@ export default function Home() {
         muted
         loop
         playsInline
+        preload="auto"
+        poster="/home-poster.jpg"
         style={{
           position: "absolute",
           inset: 0,
@@ -238,7 +241,9 @@ export default function Home() {
           objectFit: "cover",
         }}
       >
-        <source src="/pizzine-video.mov" type="video/mp4" />
+        {/* H.264: parte ovunque (iPhone, Android, Chrome, Firefox, Edge) e pesa 7 MB invece di 62 */}
+        <source src="/home-video.mp4" type="video/mp4" />
+        <source src="/pizzine-video.mov" type="video/quicktime" />
       </video>
 
       <div
@@ -284,6 +289,7 @@ export default function Home() {
             <Link href="/all-you-need" style={{ color: "white", textDecoration: "none" }}>
               All you need
             </Link>
+            <span className="home-nav-break" aria-hidden="true" />
             <Link href="/shows" style={{ color: "white", textDecoration: "none" }}>
               Shows
             </Link>
@@ -333,19 +339,6 @@ export default function Home() {
         </h1>
 
         <style>{`
-          /* menu home su telefono: tutte le voci visibili, niente a capo dentro la voce */
-          .home-nav a { white-space: nowrap; }
-          @media (max-width: 760px) {
-            .home-nav-wrap { padding: 24px 20px !important; justify-content: center !important; }
-            .home-nav {
-              flex-wrap: wrap;
-              justify-content: center;
-              column-gap: 22px !important;
-              row-gap: 16px;
-              font-size: 11px !important;
-              letter-spacing: 0.24em !important;
-            }
-          }
           /* intro a stacchi secchi sulla scritta MAKOSSA */
           @keyframes makossa-cut {
             0%   { opacity: 0; transform: scale(1.14); filter: blur(6px); }
