@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import SiteNav from "../SiteNav";
 
 const BANDCAMP = "https://makossamusica.bandcamp.com";
 
@@ -68,28 +69,7 @@ export default function Music() {
         fontFamily: "var(--font-jost), Arial, sans-serif",
       }}
     >
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "space-between",
-          padding: "28px 40px",
-          fontSize: "11px",
-          letterSpacing: "0.28em",
-          textTransform: "uppercase",
-        }}
-      >
-        <Link
-          href="/"
-          style={{
-            color: "rgba(255,255,255,0.7)",
-            textDecoration: "none",
-          }}
-        >
-          Back
-        </Link>
-
-        <div style={{ color: "rgba(255,255,255,0.45)" }}>Music</div>
-      </div>
+      <SiteNav />
 
       <section className="hero">
         <picture>

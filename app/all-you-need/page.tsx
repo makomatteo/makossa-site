@@ -1,5 +1,5 @@
-import Link from "next/link";
 import VideoBlock from "./VideoBlock";
+import SiteNav from "../SiteNav";
 
 // Metti qui l'id del video YouTube di Kiss Me (la parte dopo v=).
 const KISS_ME_YT = "djlDPdjlDXc";
@@ -96,21 +96,7 @@ export default function AllYouNeed() {
         fontFamily: "var(--font-jost), Arial, sans-serif",
       }}
     >
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "space-between",
-          padding: "28px 40px",
-          fontSize: "11px",
-          letterSpacing: "0.28em",
-          textTransform: "uppercase",
-        }}
-      >
-        <Link href="/" style={{ color: "rgba(255,255,255,0.7)", textDecoration: "none" }}>
-          Back
-        </Link>
-        <div style={{ color: "rgba(255,255,255,0.45)" }}>All you need</div>
-      </div>
+      <SiteNav />
 
       <div className="ayn-flash" aria-hidden="true" />
 

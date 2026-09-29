@@ -1,4 +1,4 @@
-import Link from "next/link";
+import SiteNav from "../SiteNav";
 
 export const metadata = {
   title: "20/20 · Makossa",
@@ -25,10 +25,7 @@ const VIDEO = "/pizzine-video.mov";
 export default function Album2020() {
   return (
     <main className="alb">
-      <div className="alb-top">
-        <Link href="/">Back</Link>
-        <span>Album</span>
-      </div>
+      <SiteNav />
 
       <div className="alb-wrap">
         <section className="alb-hero">

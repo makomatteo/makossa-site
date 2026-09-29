@@ -1,4 +1,4 @@
-import Link from "next/link";
+import SiteNav from "../SiteNav";
 
 export default function Bio() {
   return (
@@ -11,29 +11,7 @@ export default function Bio() {
         fontFamily: "Arial, sans-serif",
       }}
     >
-      <div
-        className="bio-header"
-        style={{
-          display: "flex",
-          justifyContent: "space-between",
-          padding: "28px 40px",
-          fontSize: "11px",
-          letterSpacing: "0.28em",
-          textTransform: "uppercase",
-        }}
-      >
-        <Link
-          href="/"
-          style={{
-            color: "rgba(255,255,255,0.7)",
-            textDecoration: "none",
-          }}
-        >
-          Back
-        </Link>
-
-        <div style={{ color: "rgba(255,255,255,0.45)" }}>Bio</div>
-      </div>
+      <SiteNav />
 
       <div
         className="bio-hero"

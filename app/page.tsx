@@ -279,6 +279,9 @@ export default function Home() {
             <Link href="/music" style={{ color: "white", textDecoration: "none" }}>
               Music
             </Link>
+            <Link href="/20-20" style={{ color: "white", textDecoration: "none" }}>
+              20/20
+            </Link>
             <Link href="/all-you-need" style={{ color: "white", textDecoration: "none" }}>
               All you need
             </Link>
