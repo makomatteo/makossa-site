@@ -1,5 +1,11 @@
 import SiteNav from "../SiteNav";
 
+export const metadata = {
+  title: "Bio",
+  description: "Biography of Makossa, Italian DJ and producer based in Milan.",
+  alternates: { canonical: "/bio" },
+};
+
 export default function Bio() {
   return (
     <main

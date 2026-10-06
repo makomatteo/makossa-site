@@ -1,7 +1,8 @@
 import SiteNav from "../SiteNav";
 
 export const metadata = {
-  title: "20/20 · Makossa",
+  title: "20/20",
+  alternates: { canonical: "/20-20" },
   description: "20/20, album di Makossa uscito il 26 gennaio 2021. Ascolto integrale e acquisto su Bandcamp.",
 };
 

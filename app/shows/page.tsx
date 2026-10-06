@@ -1,6 +1,10 @@
 import SiteNav from "../SiteNav";
 
-export const metadata = { title: "Shows · Makossa" };
+export const metadata = {
+  title: "Shows",
+  description: "Upcoming shows and DJ sets by Makossa.",
+  alternates: { canonical: "/shows" },
+};
 
 const BOOKING = "https://www.atom.art/representation/makossa";
 

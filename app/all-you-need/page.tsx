@@ -8,7 +8,9 @@ const ALBUM_VINYL = "https://f4.bcbits.com/img/0022982559_10.jpg";
 const KISS_ME_LINK = "https://www.youtube.com/watch?v=djlDPdjlDXc";
 
 export const metadata = {
-  title: "All you need · Makossa",
+  title: "All you need",
+  description: "All the official Makossa links: music, video, social and booking.",
+  alternates: { canonical: "/all-you-need" },
 };
 
 const LISTEN = [
