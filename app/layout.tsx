@@ -48,7 +48,12 @@ const JSON_LD = {
   description: DESCRIPTION,
   genre: ["Organic House", "Melodic Techno", "Downtempo", "House"],
   foundingLocation: { "@type": "Place", name: "Milan, Italy" },
-  sameAs: [...PROFILES.map((p) => p.href), "https://www.atom.art/representation/makossa"],
+  sameAs: [
+    ...PROFILES.map((p) => p.href),
+    "https://www.atom.art/representation/makossa",
+    "https://www.wikidata.org/wiki/Q141658510",
+    "https://musicbrainz.org/artist/5c7c7a1e-4762-4e0d-b84e-b892e2299008",
+  ],
 };
 
 export default function RootLayout({
