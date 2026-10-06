@@ -1,7 +1,7 @@
 // profili ufficiali: usati dal footer e dai dati strutturati (sameAs) in layout.tsx
 export const PROFILES = [
   { label: "Instagram", href: "https://www.instagram.com/makossa___/" },
-  { label: "SoundCloud", href: "https://soundcloud.com/mmakossa" },
+  { label: "SoundCloud", href: "https://soundcloud.com/makossa-it" },
   { label: "Spotify", href: "https://open.spotify.com/artist/0vjcd2Obtoj3k6h5JXsZ05" },
   { label: "Apple Music", href: "https://music.apple.com/artist/makossa-it/1501921205" },
   { label: "Bandcamp", href: "https://makossamusica.bandcamp.com" },
