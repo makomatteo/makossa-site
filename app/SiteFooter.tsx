@@ -6,6 +6,7 @@ export const PROFILES = [
   { label: "Apple Music", href: "https://music.apple.com/artist/makossa-it/1501921205" },
   { label: "Bandcamp", href: "https://makossamusica.bandcamp.com" },
   { label: "Facebook", href: "https://www.facebook.com/mmakossa" },
+  { label: "Discogs", href: "https://www.discogs.com/artist/18369231-Makossa-IT" },
 ];
 
 export default function SiteFooter() {
