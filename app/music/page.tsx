@@ -74,7 +74,7 @@ export default function Music() {
       <section className="hero">
         <picture>
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src="/makossa-campo-hd.jpg" alt="" />
+          <img src="/makossa-campo-hd.jpg" alt="Makossa (IT), Italian DJ and producer" />
         </picture>
         <span className="hero-veil" />
         {/* eslint-disable-next-line @next/next/no-img-element */}
